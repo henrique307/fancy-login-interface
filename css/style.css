@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+:root {
+  --bg1: url("https://wallpapers.com/images/featured/high-resolution-gfinds1akzwf6vcq.jpg");
+  --bg2: url("https://wallpaperaccess.com/full/1532763.jpg");
+  --color: #45f3ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg1);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg2);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0;
+  transition: 500ms;
+}
+
+body.signup::after {
+  opacity: 1;
+}
+
+.overlay {
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+}
+
+main {
+  border-radius: 15px;
+  width: 350px;
+  height: 340px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+body.signup main {
+  height: 440px;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  animation: border-animation 2.5s linear infinite;
+  background: repeating-conic-gradient(from var(--a), var(--color) 0%, var(--color) 10%, transparent 10%, transparent 80%, var(--color) 100%);
+}
+
+body.signup main::before {
+  filter: hue-rotate(180deg);
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes border-animation {
+  0% {
+    --a: 0deg;
+  }
+  100% {
+    --a: 360deg;
+  }
+}
+main span {
+  position: absolute;
+  inset: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+main span::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background: var(--bg1);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  filter: blur(10px);
+}
+
+main span::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background-image: var(--bg1);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  filter: blur(10px);
+}
+
+body.signup main span::before,
+body.signup main span::after {
+  background-image: var(--bg2);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  filter: blur(10px);
+}
+
+form {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  transition: 500ms;
+}
+
+form#signupform {
+  left: 100%;
+}
+
+body.signup form#signinform {
+  left: -100%;
+}
+
+body.signup form#signupform {
+  left: 0;
+}
+
+form h2 {
+  position: relative;
+  color: #fff;
+  font-size: 1.5em;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+form .input-box {
+  position: relative;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+form .input-box a,
+form .input-box span {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+a#signup {
+  text-decoration: underline;
+}
+
+a#signin {
+  margin-left: auto;
+  text-decoration: underline;
+}
+
+form .input-box input {
+  width: 100%;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #fff;
+}
+
+form .input-box input::placeholder {
+  letter-spacing: 0.05rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+form .input-box input[type=submit] {
+  background: #41a918;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form#signupform .input-box input[type=submit] {
+  background: #1cb4a4;
+}
+
+/*# sourceMappingURL=style.css.map */
